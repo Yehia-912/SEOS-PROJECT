@@ -1,4 +1,7 @@
 $(function () {
+  //animate landing element
+  $(".animate-xl").css("left", "0");
+  $(".animate-xr").css("right", "0");
   //initial width to collapsing navbar
   var strangeCollapse =
     ($(window).innerWidth() - $("nav .container").innerWidth()) / 2;
@@ -50,7 +53,4 @@ $(function () {
       1000
     );
   });
-  //animate landing element
-  $(".animate-xl").css("left", "0");
-  $(".animate-xr").css("right", "0");
 });
