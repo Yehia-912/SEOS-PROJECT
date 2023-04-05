@@ -1,0 +1,30 @@
+/*-----------------
+  override landing 
+  -----------------*/
+.landing {
+  background: url("../images/what_do_right.webp") no-repeat right;
+  position: relative;
+  overflow-x: unset;
+  overflow-y: unset;
+}
+.landing img {
+  right: unset;
+  left: -75px !important;
+}
+.landing :is(h1, p, button) {
+  left: unset;
+}
+.landing::after,
+.landing::before {
+  display: none;
+}
+.landing .shape {
+  position: absolute;
+  bottom: 64px;
+  scale: 1.7;
+  left: 27%;
+  z-index: -1;
+}
+/*-----------------
+  override landing 
+  -----------------*/

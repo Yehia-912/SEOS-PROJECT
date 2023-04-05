@@ -1,4 +1,6 @@
-/* start global rules */
+/*-----------------
+  start global rules 
+  -----------------*/
 * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -6,18 +8,11 @@
 section {
   position: relative;
 }
-a {
-  display: block;
-  text-decoration: none;
-  color: initial;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:is(h1, h2, h3, h4, h5, h6) {
   color: #2b4b80;
+}
+p {
+  color: #707b8e;
 }
 h1 {
   font-size: clamp(29px, 7vw, 65px) !important;
@@ -25,9 +20,9 @@ h1 {
 h2 {
   font-size: clamp(29px, 7vw, 50px) !important;
 }
-
-p {
-  color: #707b8e;
+a {
+  display: block;
+  text-decoration: none;
 }
 :is(h3, h4) > a {
   color: inherit;
@@ -36,6 +31,7 @@ p {
 :is(h3, h4) > a:hover {
   color: #ff5c97;
 }
+/* global card style */
 section :is(.like-card, .active) {
   transition: all 0.3s ease-out 0s;
 }
@@ -76,7 +72,7 @@ button {
   overflow: hidden;
   border: 0 !important;
 }
-button:not(.nav-button,.xd,.toggler-button)::after {
+button:not(.nav-button, .xd, .toggler-button)::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -95,7 +91,7 @@ button:not(.nav-button,.xd,.toggler-button)::after {
   -ms-transition: all 0.3s ease-out 0s !important;
   -o-transition: all 0.3s ease-out 0s !important;
 }
-button:not(.nav-button,.xd):hover::after {
+button:not(.nav-button, .xd):hover::after {
   left: 0 !important;
 }
 button:not(.toggler-button):hover .like-after {
@@ -107,13 +103,76 @@ button:not(.toggler-button):hover .like-after {
 .section-header h2 {
   font-size: 50px;
   font-weight: 700;
-  /* padding-block-start: 50px; */
   margin-bottom: 66px;
   line-height: 1.3;
 }
-/* end global rules */
+/*-----------------
+  end global rules 
+  -----------------*/
+/*-----------------
+  start pre-loader 
+  -----------------*/
 
-/* start header */
+#pre-louder .pre-louder-content {
+  background-color: #f7f7f7;
+  position: fixed;
+  max-height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+#pre-louder .pre-louder-content .circle-parent {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: white;
+  border-style: solid;
+  border-width: 3px;
+  box-shadow: 0 1px 5px 0 rgba(35, 181, 185, 0.15);
+  border-color: transparent;
+  border-top-color: #ff5c97;
+  position: relative;
+  animation-duration: 2s;
+  animation-name: rotate-louder;
+  animation-iteration-count: infinite;
+  animation-direction: f;
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -ms-transition: 0.6s;
+  -o-transition: 0.6s;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+@keyframes rotate-louder {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+#pre-louder .pre-louder-content img {
+  width: 55px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+/*-----------------
+  end pre-loader 
+  -----------------*/
+
+/*-----------------
+  start of header 
+  -----------------*/
 header {
   height: fit-content !important;
   transition: all 0.3s ease-out 0s !important;
@@ -134,9 +193,8 @@ header.sticky {
   top: 0;
   background-color: white;
   box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
-  z-index: 101;
+  z-index: 1;
 }
-/*navbar */
 header nav .navbar-brand img {
   width: 145px;
 }
@@ -171,16 +229,14 @@ header nav button a {
   position: relative;
   z-index: 1;
 }
- .like-after{
+header .nav-button .like-after {
   height: 43.992px;
   width: 125px;
   background-color: #ff5c97;
   position: absolute;
   top: 0;
   left: -100%;
-}
-
-/* navbar collapsing */
+} /* navbar small than 992px */
 @media (min-width: 992px) {
   .links {
     display: initial !important;
@@ -238,7 +294,9 @@ header nav button a {
     color: #fff;
   }
 }
-/* end of header */
+/*-----------------
+  end of header 
+  -----------------*/
 
 /* landing */
 .landing {
@@ -249,78 +307,50 @@ header nav button a {
   overflow-x: hidden;
   padding-block-start: 102px;
 }
-.landing > .container h1 {
+.landing h1 {
   margin-bottom: 40px;
   margin-block-start: 53px;
+  left: -100%;
+  position: relative;
 }
-.landing > .container p {
+.landing p {
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 54px;
   padding-inline-end: 10vw;
+  position: relative;
+  left: -150%;
+  transition: 0.1s linear 0s;
+  -webkit-transition: 0.1s linear 0s;
+  -moz-transition: 0.1s linear 0s;
+  -ms-transition: 0.1s linear 0s;
+  -o-transition: 0.1s linear 0s;
 }
-.landing > .container img {
+.landing button {
+  position: relative;
+  left: -150%;
+  transition: 0.2s linear 0s;
+  -webkit-transition: 0.2s linear 0s;
+  -moz-transition: 0.2s linear 0s;
+  -ms-transition: 0.2s linear 0s;
+  -o-transition: 0.2s linear 0s;
+}
+.landing img {
   max-width: 584px;
   max-height: 607px;
-}
-.landing .animate {
-  transition: all 0.5s linear 0s;
-  -webkit-transition: all 0.5s linear 0s;
-  -moz-transition: all 0.5s linear 0s;
-  -ms-transition: all 0.5s linear 0s;
-  -o-transition: all 0.5s linear 0s;
-}
-.landing .animate-xl {
   position: relative;
-  left: -100%;
-}
-.landing .row p {
-  transition: all 0.5s linear 0.15s ;
-  -webkit-transition: all 0.5s linear 0.15s ;
-  -moz-transition: all 0.5s linear 0.15s ;
-  -ms-transition: all 0.5s linear 0.15s ;
-  -o-transition: all 0.5s linear 0.15s ;
-}
-.landing .row button {
-  transition: all 0.5s linear 0.18s ;
-  -webkit-transition: all 0.5s linear 0.18s ;
-  -moz-transition: all 0.5s linear 0.18s ;
-  -ms-transition: all 0.5s linear 0.18s ;
-  -o-transition: all 0.5s linear 0.18s ;
-}
-.landing .animate-xr {
-  position: relative;
-  right: -100%;
-  transition: all 0.5s linear 0.18s;
-  -webkit-transition: all 0.5s linear 0.18s;
-  -moz-transition: all 0.5s linear 0.18s;
-  -ms-transition: all 0.5s linear 0.18s;
-  -o-transition: all 0.5s linear 0.18s;
-}
-.like-after {
-  transition: all 0.3s ease-out 0s;
-
-}
-/* scroll top */
-#scroll-top {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  background-color: #ff5c97;
-  color: white;
-  right: 31px;
-  bottom: 18px;
-  z-index: 100;
-  text-align: center;
-  line-height: 50px;
-  display: none;
+  right: -150%;
+  transition: 0.2s linear 0s;
+  -webkit-transition: 0.2s linear 0s;
+  -moz-transition: 0.2s linear 0s;
+  -ms-transition: 0.2s linear 0s;
+  -o-transition: 0.2s linear 0s;
 }
 .landing::before {
   background-image: url(../images/plus1.webp);
   position: absolute;
   content: "";
   top: 0;
-  z-index: -1;
   height: 30px;
   width: 30px;
   background-repeat: no-repeat;
@@ -333,7 +363,6 @@ header nav button a {
   background-image: url(../images/plus1.webp);
   position: absolute;
   content: "";
-  z-index: -1;
   height: 30px;
   width: 30px;
   background-repeat: no-repeat;
@@ -349,7 +378,7 @@ header nav button a {
     -moz-transform: scale(1.4);
     -ms-transform: scale(1.4);
     -o-transform: scale(1.4);
-}
+  }
 
   100% {
     transform: scale(1);
@@ -359,14 +388,32 @@ header nav button a {
     -o-transform: scale(1);
   }
 }
+.like-after {
+  transition: all 0.3s ease-out 0s;
+}
+/* scroll top */
+#scroll-top {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background-color: #ff5c97;
+  color: white;
+  right: 31px;
+  bottom: 18px;
+  z-index: 2;
+  text-align: center;
+  line-height: 50px;
+  display: none;
+}
+
 /* section one */
-body section:nth-of-type(1) {
+.what-we-do {
   overflow-x: hidden;
 }
-body section:nth-of-type(1) .rotated-svg {
+.what-we-do .rotated-svg {
   rotate: -45deg;
 }
-body section:nth-of-type(1) .muted-container span {
+.what-we-do .muted-container span {
   font-size: 13px;
   color: #c5ccd8;
   transition: all 0.3s ease-out 0s;
@@ -375,19 +422,19 @@ body section:nth-of-type(1) .muted-container span {
   -ms-transition: all 0.3s ease-out 0s;
   -o-transition: all 0.3s ease-out 0s;
 }
-body section:nth-of-type(1) .muted-container i {
+.what-we-do .muted-container i {
   color: #c5ccd8;
   width: 24px;
   height: 24px;
   transition: all 0.3s ease-out 0s;
 }
-body section:nth-of-type(1) .like-card:hover :is(i, span) {
+.what-we-do .like-card:hover :is(i, span) {
   color: #7b40c0;
 }
-body section:nth-of-type(1) .like-card.active :is(i, span) {
+.what-we-do .like-card.active :is(i, span) {
   color: #7b40c0;
 }
-body section:nth-of-type(1)::before {
+.what-we-do::before {
   background-image: url("../images/deco-left.webp");
   position: absolute;
   content: "";
@@ -401,11 +448,11 @@ body section:nth-of-type(1)::before {
   height: 482px;
 }
 @media (max-width: 992px) {
-  body section:nth-of-type(1)::before {
+  .what-we-do::before {
     height: 0;
   }
 }
-body section:nth-of-type(1)::after {
+.what-we-do::after {
   content: "";
   background-image: url("../images/what_do_right.webp");
   position: absolute;
@@ -415,17 +462,17 @@ body section:nth-of-type(1)::after {
   top: 175px;
 }
 @media (max-width: 1200px) {
-  body section:nth-of-type(1)::after {
+  .what-we-do::after {
     height: 0;
   }
 }
 /* end of section one */
 /* start of section two */
-body section:nth-of-type(2) {
+.we-create {
   padding-block-start: 240px;
   position: relative;
 }
-body section:nth-of-type(2)::after {
+.we-create::after {
   background-image: url("../images/we_create_right.webp");
   position: absolute;
   content: "";
@@ -436,67 +483,66 @@ body section:nth-of-type(2)::after {
   right: 0px;
   bottom: -3px;
 }
-body section:nth-of-type(2) h2 {
+.we-create h2 {
   font-size: 50px;
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 29px;
   padding-right: 17px;
 }
-body section:nth-of-type(2) p {
+.we-create p {
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 56px;
 }
 /* start of section three */
-body section:nth-of-type(3) .like-card {
+.generating-area .like-card {
   padding-block: 36px 25px;
   padding-inline: clamp(20px, 2vw, 54px);
   border: 1px solid #f2f2f2;
 }
-body section:nth-of-type(3) .row > * {
+.generating-area .row > * {
   padding-inline: unset !important;
 }
-body section:nth-of-type(3) svg {
+.generating-area svg {
   margin-block-start: 15px;
   margin-block-end: 25px;
 }
 /* start of section four */
-body section:nth-of-type(4) {
+.choose-best {
   background-image: url("../images/right-edit.webp");
   background-repeat: no-repeat;
   background-position-x: right;
 }
-body section:nth-of-type(4) svg {
+.choose-best svg {
   margin-block-end: 30px;
 }
-body section:nth-of-type(4) h4 {
+.choose-best h4 {
   font-size: 35px;
   margin-bottom: 42px;
 }
-body section:nth-of-type(4) .like-card {
+.choose-best .like-card {
   padding: 56px 40px 26px;
   border: 1px solid #ececec;
 }
-body section:nth-of-type(4) .like-card.active {
-  border: unset;
+.choose-best .like-card.active {
+  border: 1px solid transparent;
 }
-body section:nth-of-type(4) .like-card:hover {
+.choose-best .like-card:hover {
   box-shadow: 0px 10px 30px 0px rgba(133, 66, 189, 0.1);
   border: 1px solid transparent;
 }
 /* start of section five */
-body section:nth-of-type(5) {
+.visit-area {
   overflow: hidden;
 }
-body section:nth-of-type(5) .row:nth-of-type(2) {
+.visit-area .row:nth-of-type(2) {
   margin-inline: -27px;
 }
-body section:nth-of-type(5) h3 {
+.visit-area h3 {
   font-size: 30px !important;
 }
-
-body section:nth-of-type(5) .like-before {
+.visit-area .like-before {
   bottom: -40px;
   min-height: 25%;
   min-width: 80%;
@@ -504,18 +550,19 @@ body section:nth-of-type(5) .like-before {
   padding: 29px 10px 10px 50px;
 }
 /* start of section six */
-body section:nth-of-type(6) {
+.testimonial {
   overflow-x: hidden;
   position: relative;
 }
-body section:nth-of-type(6) .carousel-item {
+.testimonial .carousel-item {
+  position: relative;
   transition: all 0.3s ease 0s;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
 }
-body section:nth-of-type(6) .section-header {
+.testimonial .section-header {
   line-height: 1.3;
   font-size: 50px;
 }
@@ -531,23 +578,23 @@ body section:nth-of-type(6) .section-header {
   color: #2e1088;
   font-size: 25px;
 }
-body section:nth-of-type(6) .carousel {
+.testimonial .carousel {
   user-select: none;
 }
-body section:nth-of-type(6) svg:nth-of-type(1) {
+.testimonial svg:nth-of-type(1) {
   rotate: 180deg;
 }
-body section:nth-of-type(6) svg:nth-of-type(1) {
+.testimonial svg:nth-of-type(1) {
   position: absolute;
   top: 45%;
   left: 2%;
 }
-body section:nth-of-type(6) svg:nth-of-type(2) {
+.testimonial svg:nth-of-type(2) {
   position: absolute;
   top: 72%;
   right: 5%;
 }
-body section:nth-of-type(6):hover svg path {
+.testimonial:hover svg path {
   fill: #c2aff2;
 }
 .carousel-item .carosel-para {
@@ -558,48 +605,47 @@ body section:nth-of-type(6):hover svg path {
   padding: 0 23px;
   margin-bottom: 50px;
 }
-body section:nth-of-type(6) .carousel-indicators button {
+.testimonial .carousel-indicators button {
   visibility: hidden;
 }
 /* start of section seven */
-
-body section:nth-of-type(7) .card {
+.tips-trikes-area .card {
   border: 0 !important;
   overflow: hidden;
 }
-body section:nth-of-type(7) .card .img-container {
+.tips-trikes-area .card .img-container {
   overflow: hidden;
 }
-body section:nth-of-type(7) .card img {
+.tips-trikes-area .card img {
   transition: all 0.4s ease-out 0s;
   -webkit-transition: all 0.4s ease-out 0s;
   -moz-transition: all 0.4s ease-out 0s;
   -ms-transition: all 0.4s ease-out 0s;
   -o-transition: all 0.4s ease-out 0s;
 }
-body section:nth-of-type(7) .card:hover img {
+.tips-trikes-area .card:hover img {
   scale: 1.1;
 }
-body section:nth-of-type(7) .card > p {
+.tips-trikes-area .card > p {
   color: #ff5c97;
 }
-body section:nth-of-type(7) div p {
+.tips-trikes-area div p {
   display: flex;
   align-items: center;
   margin-block-end: 25px;
 }
-body section:nth-of-type(7) p > span {
+.tips-trikes-area p > span {
   display: inline-block;
   width: 25px;
   height: 3px;
   margin-inline-end: 33px;
   background-color: #7b40c0;
 }
-body section:nth-of-type(7) .img-container {
+.tips-trikes-area .img-container {
   margin-block-end: 40px;
 }
 /* section eight  */
-body section:nth-of-type(8) .have-project {
+.have-project .have-project {
   padding: 64px 69px 54px 78px;
   background-repeat: no-repeat;
   border-radius: 10px;
@@ -610,7 +656,7 @@ body section:nth-of-type(8) .have-project {
     ),
     url("../images/have.webp");
 }
-body section:nth-of-type(8) button a {
+.have-project button a {
   color: #7b40c0;
 }
 /* footer */

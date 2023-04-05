@@ -1,7 +1,31 @@
 $(function () {
+  //preloader
+  $("#pre-louder .pre-louder-content").animate(
+    {
+      opacity: 1,
+    },
+    1300,
+    function () {
+      $("#pre-louder").hide();
+    }
+  );
   //animate landing element
-  $(".animate-xl").css("left", "0");
-  $(".animate-xr").css("right", "0");
+  $(".animate-to-right").animate(
+    {
+      left: 0,
+    },
+    1600
+  );
+  $(".landing img").animate(
+    {
+      left: 0,
+    },
+    1500
+  );
+  //scroll-x for slider
+  setInterval(function(){
+    $(".carousel-item").toggleClass('active').parent().next().toggleClass('active sr');
+  },3000)
   //initial width to collapsing navbar
   var strangeCollapse =
     ($(window).innerWidth() - $("nav .container").innerWidth()) / 2;
@@ -50,7 +74,7 @@ $(function () {
       {
         scrollTop: 0,
       },
-      1000
+      400
     );
   });
 });
